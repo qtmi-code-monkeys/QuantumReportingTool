@@ -18,12 +18,24 @@
         </activity>
         <activity
             android:name=".UI.NewReportActivity"
-            android:label="@string/title_activity_new_test"
+            android:label="@string/title_activity_new_report"
             android:parentActivityName=".UI.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.MainActivity" />
+        </activity>
+        <activity
+            android:name=".UI.TestResultsActivity"
+            android:label="@string/title_activity_test_results" >
+        </activity>
+        <activity
+            android:name=".UI.TestSelectionActivity"
+            android:label="@string/title_activity_test_selection"
+            android:parentActivityName=".UI.NewReportActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.lucassmith.quantumreporting.UI.NewReportActivity" />
         </activity>
     </application>
 

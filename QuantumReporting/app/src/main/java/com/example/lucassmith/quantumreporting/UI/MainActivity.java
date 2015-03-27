@@ -22,6 +22,7 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.newReportButton) Button mNewReportButton;
     @InjectView(R.id.viewReportsButton) Button mViewReportsButton;
     @InjectView(R.id.viewResultsButton) Button mViewResultsButton;
+    @InjectView(R.id.viewCustomersButton) Button mViewCustomersButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
         mNewReportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "New report button tapped");
+                Log.i(TAG, "New report button tapped");
                 Intent intent = new Intent(MainActivity.this, NewReportActivity.class);
                 startActivity(intent);
             }
@@ -41,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
         mViewReportsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "View Reports button tapped");
+                Log.i(TAG, "View Reports button tapped");
 
             }
         });
@@ -49,10 +50,18 @@ public class MainActivity extends ActionBarActivity {
         mViewResultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "View Results button tapped");
+                Log.i(TAG, "View Results button tapped");
 
             }
         });
+
+        mViewCustomersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "View Customers button tapped");
+            }
+        });
+
     }
 
 

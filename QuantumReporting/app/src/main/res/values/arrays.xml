@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="quantum_customers">
+        <item>Customer</item>
+    </string-array>
+    <string-array name="customer_machines">
+        <item>Machine</item>
+    </string-array>
+    <string-array name="quantum_coatings">
+        <item>Coating</item>
+    </string-array>
+</resources>
