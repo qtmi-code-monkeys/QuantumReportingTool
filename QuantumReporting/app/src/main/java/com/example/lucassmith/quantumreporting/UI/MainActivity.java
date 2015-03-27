@@ -1,5 +1,6 @@
 package com.example.lucassmith.quantumreporting.UI;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.Button;
 
 import com.example.lucassmith.quantumreporting.R;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
@@ -25,11 +27,14 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.inject(this);
 
         mNewReportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "New report button tapped");
+                Intent intent = new Intent(MainActivity.this, NewReportActivity.class);
+                startActivity(intent);
             }
         });
 
