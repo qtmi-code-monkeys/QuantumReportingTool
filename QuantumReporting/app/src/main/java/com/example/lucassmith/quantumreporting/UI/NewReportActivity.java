@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
@@ -27,6 +28,8 @@ public class NewReportActivity extends ActionBarActivity {
     @InjectView(R.id.testTypeRadioGroup) RadioGroup mTestTypeRadioGroup;
     @InjectView(R.id.reportInfoSubmitButton) Button mReportInfoSubmitButton;
 
+    private Button mTestTypeRadio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,34 +39,46 @@ public class NewReportActivity extends ActionBarActivity {
         mReportInfoSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String customer = String.valueOf(mCustomerSelectSpinner.getSelectedItem());
-                final String machine = String.valueOf(mMachineSelectSpinner.getSelectedItem());
-                final String coating = String.valueOf(mCoatingSelectSpinner.getSelectedItem());
-                final String testType = String.valueOf(mTestTypeRadioGroup.getCheckedRadioButtonId());
 
                 Log.i(TAG, "Report info submit button pressed");
-                submitInfo(customer, machine, coating, testType);
+                submitInfo();
             }
         });
     }
 
-    private void submitInfo(String customer, String machine, String coating, String testType) {
-        if(testType == null ){
-            /*
-                Throw error saying that a test type must be selected
-                Need to make fragment error class
-             */
+    private void submitInfo() {
+
+        String customer = String.valueOf(mCustomerSelectSpinner.getSelectedItem());
+        String machine = String.valueOf(mMachineSelectSpinner.getSelectedItem());
+        String coating = String.valueOf(mCoatingSelectSpinner.getSelectedItem());
+        String testType;
+
+        try {
+            if( (mTestTypeRadio = (RadioButton) findViewById(mTestTypeRadioGroup.getCheckedRadioButtonId())) != null){
+                testType = mTestTypeRadio.getText().toString();
+                Log.i(TAG, testType);
+                Intent intent = new Intent(this, TestSelectionActivity.class);
+                intent.putExtra("customer", customer);
+                intent.putExtra("machine", machine);
+                intent.putExtra("coating", coating);
+                intent.putExtra("testType", testType);
+                startActivity(intent);
+            }
+            else{
+                alertUserAboutError("Test Type not selected");
+            }
+
+        }
+        catch(NullPointerException e){
+            Log.e(TAG, "Error caught: ", e);
         }
 
-        else {
 
-            Intent intent = new Intent(this, TestSelectionActivity.class);
-            intent.putExtra("customer", customer);
-            intent.putExtra("machine", machine);
-            intent.putExtra("coating", coating);
-            intent.putExtra("testType", testType);
-            startActivity(intent);
-        }
+    }
+
+    private void alertUserAboutError(String issue) {
+        AlertDialogFragment dialog = new AlertDialogFragment(issue);
+        dialog.show(getFragmentManager(), "error_dialog");
     }
 
 

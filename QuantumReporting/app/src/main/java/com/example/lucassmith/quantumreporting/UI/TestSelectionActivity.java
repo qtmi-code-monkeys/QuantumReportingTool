@@ -25,13 +25,15 @@ public class TestSelectionActivity extends ActionBarActivity {
     @InjectView(R.id.bayerCheck) CheckBox mBayerCheck;
     @InjectView(R.id.testSelectionSubmitButton)  Button mTestSelectionSubmitButton;
 
-    Intent intent = getIntent();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_selection);
         ButterKnife.inject(this);
+
+
 
         mTestSelectionSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +47,10 @@ public class TestSelectionActivity extends ActionBarActivity {
 
     private void startResultsLog(boolean wca, boolean swb, boolean hc, boolean chromaticity, boolean bayer) {
 
+        Intent intent = getIntent();
+
+        Log.i(TAG, wca + " " + swb + " " + hc + " " + chromaticity + " " + bayer);
+        Log.i(TAG, intent.toString());
         intent.putExtra("wca",wca);
         intent.putExtra("swb",swb);
         intent.putExtra("hc",hc);
