@@ -64,6 +64,10 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    private void alertUserAboutError(String issue) {
+        AlertDialogFragment dialog = new AlertDialogFragment(issue);
+        dialog.show(getFragmentManager(), "error_dialog");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

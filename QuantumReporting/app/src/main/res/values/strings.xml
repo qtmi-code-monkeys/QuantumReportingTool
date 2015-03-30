@@ -24,5 +24,7 @@
     <string name="hc_analysis_check">HC Analysis</string>
     <string name="chromaticity_check">Chromaticity</string>
     <string name="bayer_check">Bayer</string>
+    <string name="title_activity_lens_count">Lens Count</string>
+    <string name="lens_count_title">Lens Counts</string>
 
 </resources>

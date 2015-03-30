@@ -33,21 +33,90 @@ public class TestSelectionActivity extends ActionBarActivity {
         setContentView(R.layout.activity_test_selection);
         ButterKnife.inject(this);
 
+         final Intent intent = getIntent();
+
+        //alertUserAboutError(intent.getExtras().toString());
+        setupCheckBoxes(intent.getStringExtra("testType"));
 
 
         mTestSelectionSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Test selection submit button pressed");
-                startResultsLog(mWcaCheck.hasSelection(), mSwbCheck.hasSelection(), mHcAnalysisCheck.hasSelection(),
-                        mChromaticityCheck.hasSelection(), mBayerCheck.hasSelection());
+
+
+                boolean[] tests = new boolean[5];
+                tests[0] = mWcaCheck.isChecked();
+                tests[1] = mSwbCheck.isChecked();
+                tests[2] = mHcAnalysisCheck.isChecked();
+                tests[3] = mChromaticityCheck.isChecked();
+                tests[4] = mBayerCheck.isChecked();
+
+                if(checkForCheckedBoxes(tests)) {
+                    startResultsLog(tests[0], tests[1], tests[2], tests[3], tests[4], intent);
+                }
+                else{
+                    alertUserAboutError("No tests were selected.");
+                }
+
             }
         });
     }
 
-    private void startResultsLog(boolean wca, boolean swb, boolean hc, boolean chromaticity, boolean bayer) {
+    private void setupCheckBoxes(String testType) {
+        if(testType.equalsIgnoreCase(getString(R.string.pre_install))){
+            mHcAnalysisCheck.setChecked(true);
+            mSwbCheck.setChecked(true);
+        }
+        else if(testType.equalsIgnoreCase(getString(R.string.standard))){
+            mSwbCheck.setChecked(true);
+            mWcaCheck.setChecked(true);
+            mHcAnalysisCheck.setChecked(true);
+            mChromaticityCheck.setChecked(true);
+        }
 
-        Intent intent = getIntent();
+        else if(testType.equalsIgnoreCase(getString(R.string.non_standard))){
+            mSwbCheck.setChecked(true);
+            mWcaCheck.setChecked(true);
+            mHcAnalysisCheck.setChecked(true);
+            mChromaticityCheck.setChecked(true);
+            mBayerCheck.setChecked(true);
+        }
+    }
+
+    public boolean checkForCheckedBoxes(boolean[] tests) {
+
+
+
+        Log.i(TAG, "In button check method");
+        Log.i(TAG, tests.length+"");
+
+        int counter = 0;
+        for(int i = 0; i<tests.length; i++){
+            if(tests[i]){
+                counter++;
+                Log.i(TAG, counter+"");
+            }
+        }
+
+
+        if(counter != 0 ){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    private void alertUserAboutError(String issue) {
+        AlertDialogFragment dialog = new AlertDialogFragment(issue);
+        dialog.show(getFragmentManager(), "error_dialog");
+    }
+
+    private void startResultsLog(boolean wca, boolean swb, boolean hc, boolean chromaticity, boolean bayer, Intent intent) {
+
+
 
         Log.i(TAG, wca + " " + swb + " " + hc + " " + chromaticity + " " + bayer);
         Log.i(TAG, intent.toString());
@@ -56,7 +125,7 @@ public class TestSelectionActivity extends ActionBarActivity {
         intent.putExtra("hc",hc);
         intent.putExtra("chromaticity", chromaticity);
         intent.putExtra("bayer", bayer);
-        intent.setClass(this, TestResultsActivity.class);
+        intent.setClass(this, LensCountActivity.class);
 
         startActivity(intent);
     }
