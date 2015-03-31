@@ -23,7 +23,9 @@ public class TestSelectionActivity extends ActionBarActivity {
     @InjectView(R.id.hcAnalysisCheck) CheckBox mHcAnalysisCheck;
     @InjectView(R.id.chromaticityCheck) CheckBox mChromaticityCheck;
     @InjectView(R.id.bayerCheck) CheckBox mBayerCheck;
+
     @InjectView(R.id.testSelectionSubmitButton)  Button mTestSelectionSubmitButton;
+    @InjectView(R.id.testSelectionBackButton) Button mTestSelectionBackButton;
 
 
 
@@ -59,6 +61,13 @@ public class TestSelectionActivity extends ActionBarActivity {
                     alertUserAboutError("No tests were selected.");
                 }
 
+            }
+        });
+
+        mTestSelectionBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -120,11 +129,11 @@ public class TestSelectionActivity extends ActionBarActivity {
 
         Log.i(TAG, wca + " " + swb + " " + hc + " " + chromaticity + " " + bayer);
         Log.i(TAG, intent.toString());
-        intent.putExtra("wca",wca);
-        intent.putExtra("swb",swb);
-        intent.putExtra("hc",hc);
-        intent.putExtra("chromaticity", chromaticity);
-        intent.putExtra("bayer", bayer);
+        intent.putExtra(getString(R.string.wca_checkbox), wca);
+        intent.putExtra(getString(R.string.swb_checkbox),swb);
+        intent.putExtra(getString(R.string.hc_analysis_check),hc);
+        intent.putExtra(getString(R.string.chromaticity_check), chromaticity);
+        intent.putExtra(getString(R.string.bayer_check), bayer);
         intent.setClass(this, LensCountActivity.class);
 
         startActivity(intent);

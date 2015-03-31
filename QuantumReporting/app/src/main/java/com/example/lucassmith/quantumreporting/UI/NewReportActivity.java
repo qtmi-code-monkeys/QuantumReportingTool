@@ -26,7 +26,9 @@ public class NewReportActivity extends ActionBarActivity {
     @InjectView(R.id.machineSelectSpinner) Spinner mMachineSelectSpinner;
     @InjectView(R.id.coatingSelectSpinner) Spinner mCoatingSelectSpinner;
     @InjectView(R.id.testTypeRadioGroup) RadioGroup mTestTypeRadioGroup;
+
     @InjectView(R.id.reportInfoSubmitButton) Button mReportInfoSubmitButton;
+    @InjectView(R.id.newReportBackButton) Button mNewReportBackButton;
 
     private Button mTestTypeRadio;
 
@@ -42,6 +44,13 @@ public class NewReportActivity extends ActionBarActivity {
 
                 Log.i(TAG, "Report info submit button pressed");
                 submitInfo();
+            }
+        });
+
+        mNewReportBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -82,25 +91,5 @@ public class NewReportActivity extends ActionBarActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_new_test, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

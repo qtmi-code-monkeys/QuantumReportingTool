@@ -2,8 +2,6 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context="com.example.lucassmith.quantumreporting.UI.LensCountActivity"
@@ -32,7 +30,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:weightSum="100"
-            android:layout_weight="16">
+            android:layout_weight="16"
+            android:visibility="invisible"
+            android:id="@+id/wcaHorizontalLayout">
 
             <TextView
                 android:layout_width="match_parent"
@@ -48,7 +48,9 @@
                 android:id="@+id/wcaCountSpinner"
                 android:entries="@array/lens_count"
                 android:layout_weight="50"
-                android:background="#ffffffff"/>
+                android:background="#ffffffff"
+                android:textAlignment="center"
+                android:contentDescription="@string/wca_checkbox"/>
         </LinearLayout>
 
         <LinearLayout
@@ -56,7 +58,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:weightSum="100"
-            android:layout_weight="16">
+            android:layout_weight="16"
+            android:visibility="invisible"
+            android:id="@+id/swbHorizontalLayout">
 
             <TextView
                 android:layout_width="match_parent"
@@ -72,7 +76,9 @@
                 android:id="@+id/swbCountSpinner"
                 android:entries="@array/lens_count"
                 android:layout_weight="50"
-                android:background="#ffffffff"/>
+                android:background="#ffffffff"
+                android:textAlignment="center"
+                android:contentDescription="@string/swb_checkbox"/>
         </LinearLayout>
 
         <LinearLayout
@@ -80,7 +86,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:weightSum="100"
-            android:layout_weight="16">
+            android:layout_weight="16"
+            android:visibility="invisible"
+            android:id="@+id/hcHorizontalLayout">
 
             <TextView
                 android:layout_width="match_parent"
@@ -96,7 +104,9 @@
                 android:id="@+id/hcCountSpinner"
                 android:entries="@array/lens_count"
                 android:layout_weight="50"
-                android:background="#ffffffff"/>
+                android:background="#ffffffff"
+                android:textAlignment="center"
+                android:contentDescription="@string/hc_analysis_check"/>
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +114,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:weightSum="100"
-            android:layout_weight="16">
+            android:layout_weight="16"
+            android:visibility="invisible"
+            android:id="@+id/chromaticityHorizontalLayout">
 
             <TextView
                 android:layout_width="match_parent"
@@ -120,7 +132,9 @@
                 android:id="@+id/chromaticityCountSpinner"
                 android:entries="@array/lens_count"
                 android:layout_weight="50"
-                android:background="#ffffffff"/>
+                android:background="#ffffffff"
+                android:textAlignment="center"
+                android:contentDescription="@string/chromaticity_check"/>
         </LinearLayout>
 
         <LinearLayout
@@ -128,7 +142,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:weightSum="100"
-            android:layout_weight="16">
+            android:layout_weight="16"
+            android:visibility="invisible"
+            android:id="@+id/bayerHorizontalLayout">
 
             <TextView
                 android:layout_width="match_parent"
@@ -145,22 +161,37 @@
                 android:focusableInTouchMode="false"
                 android:entries="@array/lens_count"
                 android:layout_weight="50"
-                android:background="#ffffffff"/>
+                android:background="#ffffffff"
+                android:textAlignment="center"
+                android:contentDescription="@string/bayer_check"/>
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="16">
+            android:layout_weight="16"
+            android:weightSum="100">
 
             <Button
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:text="@string/submit_button"
-                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/back_button_test"
+                android:id="@+id/lensCountBackButton"
+                android:layout_weight="50"
                 style="@style/ButtonTheme"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="2.5dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/submit_button"
+                android:id="@+id/lensCountSubmitButton"
+                style="@style/ButtonTheme"
+                android:layout_marginTop="5dp"
+                android:layout_weight="50"
+                android:layout_marginLeft="2.5dp"/>
         </LinearLayout>
 
     </LinearLayout>

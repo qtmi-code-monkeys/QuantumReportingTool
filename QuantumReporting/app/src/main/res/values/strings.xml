@@ -26,5 +26,7 @@
     <string name="bayer_check">Bayer</string>
     <string name="title_activity_lens_count">Lens Count</string>
     <string name="lens_count_title">Lens Counts</string>
+    <string name="back_button_test">BACK</string>
+    <string name="test_results_title">Test Results</string>
 
 </resources>
