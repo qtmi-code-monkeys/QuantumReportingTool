@@ -7,19 +7,19 @@ import android.view.MenuItem;
 
 import com.example.lucassmith.quantumreporting.R;
 
-public class TestResultsActivity extends ActionBarActivity {
+public class WcaResultsActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_results);
+        setContentView(R.layout.activity_wca_results);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_test_results, menu);
+        getMenuInflater().inflate(R.menu.menu_wca_results, menu);
         return true;
     }
 

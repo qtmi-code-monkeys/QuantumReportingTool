@@ -29,8 +29,8 @@
         <activity
             android:name=".UI.TestResultsActivity"
             android:label="@string/title_activity_test_results"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".UI.LensCountActivity">
+            android:parentActivityName=".UI.LensCountActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".UI.TestSelectionActivity"
@@ -48,6 +48,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.lucassmith.quantumreporting.UI.TestSelectionActivity" />
+        </activity>
+        <activity
+            android:name=".UI.WcaResultsActivity"
+            android:label="@string/title_activity_wca_results" >
         </activity>
     </application>
 

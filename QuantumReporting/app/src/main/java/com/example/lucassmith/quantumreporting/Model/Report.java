@@ -47,6 +47,23 @@ public class Report {
         mTestType = testType;
     }
 
+    public Report(String customerName, String customerMachine, String customerCoating, String testType,
+                  BayerResults bayerResults, ChromaticityResults chromaticityResults, HcAnalysisResults hcAnalysisResults,
+                  SwbResults swbXResults, SwbResults swbDcResults, SwbResults swbDiResults, SwbResults swbCResults, WcaResults wcaResults) {
+        mCustomerName = customerName;
+        mCustomerMachine = customerMachine;
+        mCustomerCoating = customerCoating;
+        mTestType = testType;
+        mBayerResults = bayerResults;
+        mChromaticityResults = chromaticityResults;
+        mHcAnalysisResults = hcAnalysisResults;
+        mSwbXResults = swbXResults;
+        mSwbDcResults = swbDcResults;
+        mSwbDiResults = swbDiResults;
+        mSwbCResults = swbCResults;
+        mWcaResults = wcaResults;
+    }
+
     public String getCustomerName() {
         return mCustomerName;
     }
